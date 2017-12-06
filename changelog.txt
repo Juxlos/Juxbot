@@ -1,0 +1,2 @@
+0.0.0.1 - 6/12/2017 testing commands with discord.ext.commands
+0.0.0.2 - 6/12/2017 reverted to @bot.event instead, established basic connections and admin commands

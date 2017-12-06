@@ -1,0 +1,20 @@
+{
+    "command_list": {
+        ";pmdquiz": {
+			"admin_only": "False"
+            "sim": "False",
+            "cooldown": 120,
+            "summary": "This command initiates the 'personality quiz' segment of Mystery Dungeon games."
+        }
+    },
+    "servers": {
+        "175094349116342274": {
+            "authorized_at": 1512580329.8773644,
+            "active_commands": []
+        },
+        "186588826234257408": {
+            "authorized_at": 1512580174.7718089,
+            "active_commands": []
+        }
+    }
+}
