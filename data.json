@@ -1,7 +1,7 @@
 {
     "command_list": {
         ";pmdquiz": {
-			"admin_only": "False"
+			"admin_only": "False",
             "sim": "False",
             "cooldown": 120,
             "summary": "This command initiates the 'personality quiz' segment of Mystery Dungeon games."

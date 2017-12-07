@@ -2,8 +2,8 @@
 #       Rewrite
 #       JuxBot
 #       By Juxlos
-#       Version: 0.0.0.2
-#       December 6, 2017
+#       Version: 0.0.0.4
+#       December 7, 2017
 
 #   Import libraries
 import asyncio
@@ -59,7 +59,21 @@ async def authorize_server(message):
 
 #   Help message
 async def help_message(target):
-    commands = data['command_list']
+    command_list = data['command_list']
+    names = list(command_list.keys())
+    #   Names are by default all commands
+    #   This cuts admin commands
+    if target.id not in config.admin_id:
+        names = [name for name in names if command_list[name]["admin_only"] is False]
+    text = ['```']
+    for name in names:
+        try:
+            text.append(name+'| '+command_list[name]['summary'])
+        except KeyError:
+            # No summary case
+            text.append(name+'| '+'No summary')
+    text.append('```')
+    await bot.send_message(target, '\n'.join(text))
 
 
 #   Checks cooldown for a command
@@ -171,10 +185,10 @@ async def on_message(message):
     #   2. Ignore non-commands (unless further message in individual commands)
     #   3. Ignore everything outside non-authorized servers
     if message.author.id != bot.user.id and message.content.startswith(';') and \
-            (message.server.id in list(data['servers'].keys()) or message.author.id == config.admin_id):
+            (message.server.id in list(data['servers'].keys()) or message.author.id in config.admin_id):
         #   PMD Personality test, after the cooldown and simultaneity test obv
         if message.content == ';pmdquiz':
-            if active_commands(';pmdquiz'):
+            if active_commands(';pmdquiz', message.server):
                 perm = check_cooldown(';pmdquiz')
                 if perm[0]:
                     await PMD.personality_test(message)
@@ -182,7 +196,7 @@ async def on_message(message):
                     await bot.send_message(message.channel,perm[1])
             else:
                 await bot.send_message(message.author, 'Someone else is taking the quiz, sorry!')
-        elif message.content == ';authorize' and message.author.id == config.admin_id:
+        elif message.content == ';authorize' and message.author.id in config.admin_id:
             await authorize_server(message)
         # Generates help message    
         elif message.content in [';help', ';commands', ';command']:
