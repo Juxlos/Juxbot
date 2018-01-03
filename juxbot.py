@@ -2,8 +2,8 @@
 #       Rewrite
 #       JuxBot
 #       By Juxlos
-#       Version: 0.0.0.6
-#       December 31, 2017
+#       Version: 0.0.0.7
+#       January 3, 2018
 
 #   Import libraries
 import asyncio
