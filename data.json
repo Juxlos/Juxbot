@@ -13,6 +13,13 @@
             "sim": "True",
             "summary": "Gets PMD stats.",
             "admin_only": "False"
+        },
+        ";changeimg": {
+            "cooldown": 12,
+            "last_use": 1515001117.8566797,
+            "sim": "True",
+            "summary": "Changes the avatar shown in ;pmdstats.",
+            "admin_only": "False"
         }
     },
     "servers": {

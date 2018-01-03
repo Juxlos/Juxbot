@@ -2,7 +2,7 @@
 #       Rewrite
 #       JuxBot
 #       By Juxlos
-#       Version: 0.0.0.7
+#       Version: 0.0.0.8
 #       January 3, 2018
 
 #   Import libraries
@@ -62,6 +62,22 @@ def userwrite():
 def date_time(t=time.time()):
     st = datetime.datetime.fromtimestamp(t).strftime('%Y-%m-%d %H:%M:%S')
     return st + " UTC"
+
+
+def check_image_url(url):
+    k = False
+    url = url.lower()
+    if url.startswith('http://') or url.startswith('https://'):
+        if url.split('.')[-1] in ['png', 'jpg', 'jpeg','gif']:
+            k = True
+    #   Common decorators
+        else:
+            check = [url.split('&'), url.split('?'), url.split(':')]
+            for el in check:
+                for cuts in el:
+                    if cuts.split('.')[-1] in ['png', 'jpg', 'jpeg', 'gif']:
+                        k = True
+    return k
 
 
 #   Whitelist of servers
@@ -198,6 +214,30 @@ class PMDModule:
         while len(l) < n:
             l.append(random.choice([x for x in q if x not in l]))
         return l
+
+    #   Allows image change outside command by url = False
+    async def process_image_change(self, message, url=False):
+        if url is False:
+            test = True
+            mcl = message.content.split()
+            if len(mcl) == 1:
+                url = message.author.avatar_url
+                if len(url)<5:
+                    test = False
+            else:
+                url = mcl[1]
+                test = check_image_url(url)
+        else:
+            test = False
+        if test:
+            await bot.send_message(message.channel, "Image changed!")
+            user_data[message.author.id]['pfp'] = url
+            userwrite()
+        else:
+            await bot.send_message(message.channel, "Uh, not to be rude, {0}, but I can't see your face".format(
+                message.author.mention
+            ))
+
 
     def traitadd(self, t, var, n):
         if t in list(var.keys()):
@@ -421,7 +461,6 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print(discord.__version__)
-    
 #   Main bot part
 #   a.k.a. spaghetti section
 
@@ -457,6 +496,8 @@ async def on_message(message):
                 else:
                     await bot.send_message(message.channel, '{0}, I cannot recognize you. Maybe you should do ;pmdquiz\
                      first before asking about your statistics.'.format(message.author.mention))
+            elif message.content.startswith(';changeimg'):
+                await PMD.process_image_change(message)
 
 #       Runs the whole thing!
 bot.run(config.bot_api_key)
