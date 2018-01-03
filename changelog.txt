@@ -1,2 +1,4 @@
 0.0.0.1 - 6/12/2017 testing commands with discord.ext.commands
 0.0.0.2 - 6/12/2017 reverted to @bot.event instead, established basic connections and admin commands
+0.0.0.6 - 31/12/2017 began porting the personality quiz part, at least half of it or so
+0.0.0.7 - 3/1/2018 completed base personality quiz and added stats command

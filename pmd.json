@@ -5,7 +5,6 @@
         "Shinx",
         "Slowpoke",
         "Mareep",
-        "Nuzleaf",
         "Riolu",
         "Machop",
         "Axew",
@@ -36599,7 +36598,6 @@
                 "Riolu",
                 "Totodile",
                 "Snivy",
-                "Nuzleaf",
                 "Fennekin"
             ],
             "message": [
@@ -36614,7 +36612,6 @@
         "defiant": {
             "poke": [
                 "Pawniard",
-                "Piplup",
                 "Zorua"
             ],
             "message": [

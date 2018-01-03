@@ -1,20 +1,28 @@
 {
     "command_list": {
         ";pmdquiz": {
-			"admin_only": "False",
-            "sim": "False",
             "cooldown": 120,
-            "summary": "This command initiates the 'personality quiz' segment of Mystery Dungeon games."
+            "last_use": 1514710269.5905192,
+            "sim": "False",
+            "summary": "Initiates the 'personality quiz' segment of Mystery Dungeon games.",
+            "admin_only": "False"
+        },
+        ";pmdstats": {
+            "cooldown": 15,
+            "last_use": 1515001117.8566797,
+            "sim": "True",
+            "summary": "Gets PMD stats.",
+            "admin_only": "False"
         }
     },
     "servers": {
         "175094349116342274": {
-            "authorized_at": 1512580329.8773644,
-            "active_commands": []
+            "active_commands": [],
+            "authorized_at": 1512580329.8773644
         },
         "186588826234257408": {
-            "authorized_at": 1512580174.7718089,
-            "active_commands": []
+            "active_commands": [],
+            "authorized_at": 1512580174.7718089
         }
     }
 }

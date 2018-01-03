@@ -1,0 +1,28 @@
+{
+    "_exampleid_":{
+        "id":"user_id",
+        "species":"Name",
+        "pfp":"url",
+        "name":"Player Name",
+        "stats":{
+            "base_xp":"base_xp",
+            "type":[
+                "TYPE1",
+                "TYPE2"
+            ],
+            "level":10,
+            "name":"species_name",
+            "stats":[
+                "XP",
+                "HP",
+                "Attack",
+                "Defense",
+                "Special Attack",
+                "Special Defense",
+                "Speed"
+            ],
+            "dex_no":"Pokedex number"
+        },
+        "nature":"nature"
+    }
+}
